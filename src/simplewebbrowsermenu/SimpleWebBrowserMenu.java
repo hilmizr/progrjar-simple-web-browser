@@ -8,6 +8,7 @@ import simplewebbrowsermenu.ShowClickableLinks;
 import simplewebbrowsermenu.ShowClickableLinksHTTP;
 import simplewebbrowsermenu.OpenHTTPWeb;
 import simplewebbrowsermenu.OpenHTTPWebAuth;
+import simplewebbrowsermenu.HTTPErrorMessages;
 
 
 /**
@@ -73,6 +74,13 @@ public class SimpleWebBrowserMenu {
                     break;
                 case 6:
                     // Show respective HTTP error messages
+                    Scanner myObj6 = new Scanner(System.in);  // Create a Scanner object
+                    System.out.println("------------------------");
+                    System.out.println("ENTER URL:");
+
+                    String url6 = myObj6.nextLine();  // Read user input
+                       
+                    HTTPErrorMessages.showError(url6);
                     break;
                 case 7:
                     // Open a web page that is protected by HTTP Basic Authentication
