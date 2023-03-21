@@ -8,7 +8,7 @@ public class HTMLParser {
             Scanner scanner = new Scanner(System.in);
             System.out.print("Enter the URL: ");
             String url = scanner.nextLine();
-            
+            url = "http://" + url;
             // Extract the hostname and path from the URL
             URL u = new URL(url);
             String hostname = u.getHost();
