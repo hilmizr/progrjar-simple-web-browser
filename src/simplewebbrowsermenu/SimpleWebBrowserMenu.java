@@ -6,6 +6,9 @@ package simplewebbrowsermenu;
 import java.util.Scanner;
 import simplewebbrowsermenu.ShowClickableLinks;
 import simplewebbrowsermenu.ShowClickableLinksHTTP;
+import simplewebbrowsermenu.OpenHTTPWeb;
+import simplewebbrowsermenu.OpenHTTPWebAuth;
+
 
 /**
  *
@@ -73,13 +76,14 @@ public class SimpleWebBrowserMenu {
                     break;
                 case 7:
                     // Open a web page that is protected by HTTP Basic Authentication
+                    OpenHTTPWebAuth.openWeb();
                     break;
                 case 8:
                     // Can access a web page that is protected behind a login page
                     break;
                 case 0:
                     // Exit the program
-                    System.out.println("Goodbye!");
+                    System.out.println("Goodbye! Thank you!");
                     break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
