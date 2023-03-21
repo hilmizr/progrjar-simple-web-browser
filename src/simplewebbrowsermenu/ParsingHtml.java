@@ -1,11 +1,25 @@
 import java.net.*;
 import java.io.*;
+import java.util.Scanner;
 
 public class HTMLParser {
     public static void main(String[] args) {
         try {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter the URL: ");
+            String url = scanner.nextLine();
+            
+            // Extract the hostname and path from the URL
+            URL u = new URL(url);
+            String hostname = u.getHost();
+            String path = u.getPath();
+            if (path.isEmpty()) {
+                path = "/";
+            }
+
             // Open a socket to the web server
-            Socket socket = new Socket("www.google.com", 80);
+            // Socket socket = new Socket("www.google.com", 80);
+            Socket socket = new Socket(hostname, 80);
 
             // Send an HTTP request for the web page
             PrintWriter out = new PrintWriter(socket.getOutputStream());
