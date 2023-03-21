@@ -29,7 +29,7 @@ public class ParallelDownloader {
                 long end = (i == NUM_THREADS - 1) ? fileSize - 1 : start + chunkSize - 1;
 
                 // Create a new socket for this thread
-                Socket socket = new Socket(url.getHost(), 80);
+                Socket socket = new Socket(url.getHost(), 443);
 
                 // Send an HTTP request for this chunk of the file
                 OutputStream os = socket.getOutputStream();
