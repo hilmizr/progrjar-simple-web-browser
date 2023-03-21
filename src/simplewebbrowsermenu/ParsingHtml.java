@@ -24,7 +24,7 @@ public class HTMLParser {
             // Send an HTTP request for the web page
             PrintWriter out = new PrintWriter(socket.getOutputStream());
             out.println("GET / HTTP/1.1");
-            out.println("Host: www.google.com");
+            out.println("Host: " + hostname);
             out.println("");
             out.flush();
 
