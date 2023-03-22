@@ -9,6 +9,9 @@ import simplewebbrowsermenu.ShowClickableLinksHTTP;
 import simplewebbrowsermenu.OpenHTTPWeb;
 import simplewebbrowsermenu.OpenHTTPWebAuth;
 import simplewebbrowsermenu.HTTPErrorMessages;
+import simplewebbrowsermenu.ParallelDownload;
+import simplewebbrowsermenu.ParsingHtml;
+import simplewebbrowsermenu.ParsingHtmlHTTP;
 
 
 /**
@@ -43,6 +46,22 @@ public class SimpleWebBrowserMenu {
             switch (choice) {
                 case 1:
                     // Open a web page given a URI and shows the text
+                    Scanner myObj1 = new Scanner(System.in);  // Create a Scanner object
+                    System.out.println("------------------------");
+                    System.out.println("ENTER URL:");
+                    String url = myObj1.nextLine();  // Read user input
+                    
+                    if (url.startsWith("https")) {
+                        // Create an instance of the ShowClickableLinks class
+                        // Call the method to show clickable links
+                        ParsingHtml.HTMLParser(url);
+                    } else if (url.startsWith("http")) {
+                        // Create an instance of the ShowClickableLinksHTTP class
+                        // Call the method to show clickable links
+                        ParsingHtmlHTTP.HTMLParser(url);
+                    } else {
+                        System.out.println("Invalid URL");
+                    }
                     break;
                 case 2:
                     Scanner myObj = new Scanner(System.in);  // Create a Scanner object
@@ -68,6 +87,7 @@ public class SimpleWebBrowserMenu {
                     break;
                 case 4:
                     // Download a file in parallel (OPTIONAL)
+                    ParallelDownload.ParallelDownloader();
                     break;
                 case 5:
                     // Follow redirections
