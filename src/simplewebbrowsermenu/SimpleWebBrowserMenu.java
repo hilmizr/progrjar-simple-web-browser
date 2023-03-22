@@ -3,15 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package simplewebbrowsermenu;
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import simplewebbrowsermenu.ShowClickableLinks;
 import simplewebbrowsermenu.ShowClickableLinksHTTP;
 import simplewebbrowsermenu.OpenHTTPWeb;
 import simplewebbrowsermenu.OpenHTTPWebAuth;
 import simplewebbrowsermenu.HTTPErrorMessages;
-import simplewebbrowsermenu.ParallelDownload;
-import simplewebbrowsermenu.ParsingHtml;
-import simplewebbrowsermenu.ParsingHtmlHTTP;
+import simplewebbrowsermenu.ParallelDownloader;
+import simplewebbrowsermenu.ParsingHTML;
+import simplewebbrowsermenu.ParsingHTMLHTTP;
+import simplewebbrowsermenu.FileDownloader;
+import simplewebbrowsermenu.HttpRedirectExample;
 
 
 /**
@@ -37,7 +42,6 @@ public class SimpleWebBrowserMenu {
             System.out.println("[5] Follow redirections");
             System.out.println("[6] Show respective HTTP error messages");
             System.out.println("[7] Open a web page that is protected by HTTP Basic Authentication");
-            System.out.println("[8] Can access a web page that is protected behind a login page");
             System.out.println("[0] Exit the program");
             System.out.print("Enter your choice: ");
             
@@ -49,16 +53,16 @@ public class SimpleWebBrowserMenu {
                     Scanner myObj1 = new Scanner(System.in);  // Create a Scanner object
                     System.out.println("------------------------");
                     System.out.println("ENTER URL:");
-                    String url = myObj1.nextLine();  // Read user input
+                    String url1 = myObj1.nextLine();  // Read user input
                     
-                    if (url.startsWith("https")) {
+                    if (url1.startsWith("https")) {
                         // Create an instance of the ShowClickableLinks class
                         // Call the method to show clickable links
-                        ParsingHtml.HTMLParser(url);
-                    } else if (url.startsWith("http")) {
+                        ParsingHTML.HTMLParser(url1);
+                    } else if (url1.startsWith("http")) {
                         // Create an instance of the ShowClickableLinksHTTP class
                         // Call the method to show clickable links
-                        ParsingHtmlHTTP.HTMLParser(url);
+                        ParsingHTMLHTTP.HTMLHTTPParser(url1);
                     } else {
                         System.out.println("Invalid URL");
                     }
@@ -83,14 +87,33 @@ public class SimpleWebBrowserMenu {
                     }
                     break;
                 case 3:
-                    // Download a file regardless of its size
+                    Scanner myObj3 = new Scanner(System.in);  // Create a Scanner object
+                    System.out.println("------------------------");
+                    System.out.println("ENTER URL:");
+                    String url3 = myObj3.nextLine();  // Read user input
+                    System.out.println("------------------------");
+                    System.out.println("ENTER DIRECTORY:");
+                    String dir3 = myObj3.nextLine();  // Read user input
+                    {
+                        try {
+                            // Download a file regardless of its size
+                            FileDownloader.downloadFile(url3, dir3);
+                        } catch (IOException ex) {
+                            Logger.getLogger(SimpleWebBrowserMenu.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
                     break;
                 case 4:
                     // Download a file in parallel (OPTIONAL)
-                    ParallelDownload.ParallelDownloader();
+                    ParallelDownloader.downloadParallel();
                     break;
                 case 5:
+                    Scanner myObj5 = new Scanner(System.in);  // Create a Scanner object
+                    System.out.println("------------------------");
+                    System.out.println("ENTER URL:");
+                    String url5 = myObj5.nextLine();  // Read user input
                     // Follow redirections
+                    HttpRedirectExample.followRedirect(url5);
                     break;
                 case 6:
                     // Show respective HTTP error messages
@@ -105,9 +128,6 @@ public class SimpleWebBrowserMenu {
                 case 7:
                     // Open a web page that is protected by HTTP Basic Authentication
                     OpenHTTPWebAuth.openWeb();
-                    break;
-                case 8:
-                    // Can access a web page that is protected behind a login page
                     break;
                 case 0:
                     // Exit the program
