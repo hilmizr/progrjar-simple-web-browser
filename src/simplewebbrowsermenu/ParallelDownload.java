@@ -22,11 +22,16 @@ public class ParallelDownloader {
             long fileSize = url.openConnection().getContentLength();
             long chunkSize = fileSize / NUM_THREADS;
 
+            System.out.println("File Size : " + fileSize);
+            System.out.println("Chunk Size : " + chunkSize);
+
             // Create a socket for each thread and start the download
             for (int i = 0; i < NUM_THREADS; i++) {
                 // Calculate the start and end positions for this chunk
                 long start = i * chunkSize;
                 long end = (i == NUM_THREADS - 1) ? fileSize - 1 : start + chunkSize - 1;
+
+                System.out.println("Chunk number " + i + " size : " + (end - start));
 
                 // Create a new socket for this thread
                 Socket socket = new Socket(url.getHost(), 443);

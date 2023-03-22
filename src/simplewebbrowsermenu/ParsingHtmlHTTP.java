@@ -14,7 +14,7 @@ public class HTMLParser {
             }
 
             // Open a socket to the web server
-            Socket socket = new Socket(hostname, 443);
+            Socket socket = new Socket(hostname, 80);
 
             // Send an HTTP request for the web page
             PrintWriter out = new PrintWriter(socket.getOutputStream());
