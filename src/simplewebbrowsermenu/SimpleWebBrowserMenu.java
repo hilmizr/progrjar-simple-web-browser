@@ -4,6 +4,8 @@
  */
 package simplewebbrowsermenu;
 import java.util.Scanner;
+
+import filedownloader.FileDownloader;
 import simplewebbrowsermenu.ShowClickableLinks;
 import simplewebbrowsermenu.ShowClickableLinksHTTP;
 import simplewebbrowsermenu.OpenHTTPWeb;
@@ -83,6 +85,7 @@ public class SimpleWebBrowserMenu {
                     }
                     break;
                 case 3:
+                    FileDownloader();
                     // Download a file regardless of its size
                     break;
                 case 4:
@@ -91,6 +94,7 @@ public class SimpleWebBrowserMenu {
                     break;
                 case 5:
                     // Follow redirections
+                    HttpRedirectExample();
                     break;
                 case 6:
                     // Show respective HTTP error messages
