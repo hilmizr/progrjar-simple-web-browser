@@ -1,3 +1,4 @@
+package simplewebbrowsermenu;
 import java.io.*;
 import java.net.*;
 
@@ -7,7 +8,7 @@ public class ParallelDownloader {
     private static final String FILE_NAME = "file.zip";
     private static final int CHUNK_SIZE = 1024;
 
-    public static void main(String[] args) {
+    public static void downloadParallel() {
         try {
             // Create a new URL object to represent the file to download
             URL url = new URL(FILE_URL);

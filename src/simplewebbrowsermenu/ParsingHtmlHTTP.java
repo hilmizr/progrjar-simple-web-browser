@@ -1,9 +1,10 @@
+package simplewebbrowsermenu;
 import java.net.*;
 import java.io.*;
 import java.util.Scanner;
 
-public class HTMLParser {
-    public static void main(String url) {
+public class ParsingHTMLHTTP{
+    public static void HTMLHTTPParser(String url) {
         try {
             // Extract the hostname and path from the URL
             URL u = new URL(url);
